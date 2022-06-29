@@ -1,10 +1,10 @@
 # Made as an end of the year Advanced Script Languages project. Django + PostgreSQL + Bootstrap
 Specification:
 
-Models: 
-  Book:
-    -ISBNs are unique and have length verification
-    -author title and genre are unique together
+#Models: 
+  #Book:
+    #-ISBNs are unique and have length verification
+    #-author title and genre are unique together
     
   Film:
     -max quantity difference between genres are 3
