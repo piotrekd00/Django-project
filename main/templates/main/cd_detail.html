@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5" style="width: 70%;">
+    <div class="col">
+        <h1 class="text-center">Book Details</h1>
+        <div class="d-flex justify-content-center">
+            <table class="table table-striped mt-5" style="width: 50%">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>{{cd.band}}</td>
+                            <td>{{cd.genre}}</td>
+                            <td>{{cd.title}}</td>
+                            <td>{{cd.duration}}</td>
+                            <td>{{cd.songslist}}</td>
+                            {% if user.is_authenticated %}
+                            <td><a href="{% url 'rented:rented_create' cd.id %} ">Rent</a></td>
+                            <td><a href="{% url 'cd:cd_update' cd.id %} ">Update</a></td>
+                            <td><a href="{% url 'cd:cd_delete' cd.id %}">Delete</a></td>
+                            {% endif %}
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{{request.META.HTTP_REFERER}}" class="d-block btn btn-primary btn-lg my-5">BACK</a>
+        </div>
+    </div>
+        
+</div>
+
+{% endblock  %}

@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% block title %}Create new list{% endblock %}
+
+{% block content %}
+<div class="container d-flex mt-5" style="width: 70%;">
+    <div class="col">
+        <h1 class="text-center">Rental offices</h1>
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr>
+                    {% comment %} <th>#</th> {% endcomment %}
+                    <th class="text-center" scope="col">Title</th>
+                    <th class="text-center" scope="col">Date start</th>
+                    <th class="text-center" scope="col">Date end</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for rented in rented_list %}
+                <tr>
+                    <td class="text-center">{{rented.item.title}}</td>
+                    <td class="text-center">{{rented.date_start}}</td>
+                    <td class="text-center">{{rented.date_end}}</td>
+                    <td><a href="{% url 'rented:rented_delete' rented.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5" style="width: 70%;">
+    <div class="col">
+        <h1 class="text-center">Rental office depot</h1>
+        <div class="d-flex justify-content-center">
+            <table class="table table-striped mt-5" style="width: 50%">
+                    <th>Books</th>
+                    {%  if rentaloffice.book_set.all.exists %}
+                    {% for book in rentaloffice.book_set.all %}
+                    <tr>
+                    <td><a href="{% url 'book:book_detail' book.id %}">{{ book.title }}</a></td>
+                    </tr>
+                    {% endfor %}
+                    {%  endif %}
+            </table>
+            <table class="table table-striped mt-5" style="width: 50%">
+                    <th>Films</th>
+                    {%  if rentaloffice.film_set.all.exists %}
+                    {% for film in rentaloffice.film_set.all %}
+                    <tr>
+                    <td><a href="{% url 'film:film_detail' film.id %}">{{ film.title }}</a></td>
+                    </tr>
+                    {% endfor %}
+                    {%  endif %}
+            </table>
+            <table class="table table-striped mt-5" style="width: 50%">
+                    <th>CD's</th>
+                    {%  if rentaloffice.cd_set.all.exists %}
+                    {% for cd in rentaloffice.cd_set.all %}
+                    <tr>
+                    <td><a href="{% url 'cd:cd_detail' cd.id %}">{{ cd.title }}</a></td>
+                    </tr>
+                    {% endfor %}
+                    {%  endif %}
+            </table>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'rentaloffice:all' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a>
+        </div>
+    </div>
+        
+</div>
+
+{% endblock  %}

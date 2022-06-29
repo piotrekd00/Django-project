@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5" style="width: 70%;">
+    <div class="col">
+        <h1 class="text-center">Film Details</h1>
+        <div class="d-flex justify-content-center">
+            <table class="table table-striped mt-5" style="width: 50%">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>{{film.director}}</td>
+                            <td>{{film.title}}</td>
+                            <td>{{film.genre}}</td>
+                            <td>{{film.duration}}</td>
+                            {% if user.is_authenticated %}
+                            <td><a href="{% url 'rented:rented_create' film.id %} ">Rent</a></td>
+                            <td><a href="{% url 'film:film_update' film.id %} ">Update</a></td>
+                            <td><a href="{% url 'film:film_delete' film.id %}">Delete</a></td>
+                            {% endif %}
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{{request.META.HTTP_REFERER}}" class="d-block btn btn-primary btn-lg my-5">BACK</a>
+        </div>
+    </div>
+        
+</div>
+
+{% endblock  %}
